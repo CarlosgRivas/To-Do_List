@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+        /* Estilos CSS */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+        }
+        .todo-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .todo-item input[type="checkbox"] {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>To-Do List</h1>
+        <input type="text" id="taskInput" placeholder="Enter task...">
+        <button onclick="addTask()">Add Task</button>
+        <ul id="taskList"></ul>
+    </div>
+
+    <script>
+        // Función para agregar una nueva tarea
+        function addTask() {
+            var taskInput = document.getElementById("taskInput");
+            var taskList = document.getElementById("taskList");
+            var taskText = taskInput.value;
+
+            if (taskText.trim() === "") {
+                alert("Please enter a task!");
+                return;
+            }
+
+            var listItem = document.createElement("li");
+            listItem.className = "todo-item";
+            listItem.innerHTML = `<input type="checkbox"><span>${taskText}</span>`;
+            taskList.appendChild(listItem);
+
+            // Limpiar el campo de entrada
+            taskInput.value = "";
+        }
+    </script>
+</body>
+</html>
